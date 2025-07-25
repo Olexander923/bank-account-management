@@ -1,0 +1,1 @@
+Console application providing basic functions for managing users and their accounts using microservices: creating a user, an account, transferring/depositing/withdrawing funds, closing an account. Creating and managing flows, statistics for all users.
