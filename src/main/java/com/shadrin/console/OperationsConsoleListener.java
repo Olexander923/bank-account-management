@@ -1,6 +1,9 @@
 package com.shadrin.console;
 import com.shadrin.console_commands.AccountOperationType;
 import com.shadrin.console_commands.OperationCommand;
+import com.shadrin.console_commands.WithdrawAccountCommand;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -14,6 +17,7 @@ import java.util.stream.Collectors;
  */
 @Component
 public class OperationsConsoleListener implements Runnable {
+    private static final Logger log = LogManager.getLogger(OperationsConsoleListener.class);
     private final Scanner scanner;
     private final Map<AccountOperationType, OperationCommand> commandMap;
 
@@ -60,12 +64,15 @@ public class OperationsConsoleListener implements Runnable {
                         if (command != null) {
                             command.execute();
                         } else {
+                            log.error("A none-exist command has been entered");
                             System.err.println("No command handler for: " + accountOperationType);
                         }
                     } catch (IllegalArgumentException e) {
+                        log.error("Entered invalid operation type",e);
                         System.err.println("Unknown operation type: " + inputCommandType);
                     }
                 } catch (Exception e) {
+                    log.error("Unexpected system error in 'operation console listener'",e);
                     System.err.println("Error : " + e.getMessage());
                 }
             }

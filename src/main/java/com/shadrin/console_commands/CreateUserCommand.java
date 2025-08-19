@@ -2,11 +2,14 @@ package com.shadrin.console_commands;
 
 import com.shadrin.entity.User;
 import com.shadrin.services.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
 @Component
 public class CreateUserCommand implements OperationCommand {
+    private static final Logger log = LogManager.getLogger(CreateUserCommand.class);
     private final Scanner scanner;
     private final UserService userService;
 
@@ -31,7 +34,8 @@ public class CreateUserCommand implements OperationCommand {
 
             System.out.println("User created " + newUser);
         } catch (IllegalStateException | IllegalArgumentException e) {
-            System.err.println("Error: " + e.getMessage());
+            log.error("Unexpected system error in 'create user' operation",e);
+            System.err.println("System error: Please contact support " + e.getMessage());
         }
     }
 

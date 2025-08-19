@@ -4,6 +4,8 @@ import com.shadrin.entity.Account;
 import com.shadrin.entity.User;
 import com.shadrin.services.AccountService;
 import com.shadrin.services.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
@@ -15,6 +17,7 @@ import java.util.Scanner;
  */
 @Component
 public class CloseAccountCommand implements OperationCommand {
+    private static final Logger log = LogManager.getLogger(CloseAccountCommand.class);
     private final AccountService accountService;
     private final Scanner scanner;
     private final UserService userService;
@@ -52,10 +55,13 @@ public class CloseAccountCommand implements OperationCommand {
                     closedAccount.getMoneyAmount()
             ));
         } catch (NumberFormatException e) {
-            System.err.println("Error: Invalid account ID number");
+            log.error("Error: Invalid account ID number");
+            System.err.println("Error: invalid account ID, please check data" + e.getMessage());
         } catch (IllegalArgumentException | IllegalStateException e) {
+            log.error("Operation failed: {}", e.getMessage(),e);
             System.err.println("Operation failed: " + e.getMessage());
         } catch (Exception e) {
+            log.error("Unexpected system error in 'close account' operation",e);
             System.err.println("System error: Please contact support");
         }
     }

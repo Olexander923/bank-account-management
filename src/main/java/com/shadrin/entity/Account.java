@@ -1,20 +1,22 @@
 package com.shadrin.entity;
 
 
+import java.math.BigDecimal;
+
 public class Account {
     private final long accountId;//id номера счета
     private final long userId;
-    private double moneyAmount;//текущий баланс счета
-    private double transferCommission;
+    private BigDecimal moneyAmount;//текущий баланс счета
+    private BigDecimal transferCommission;
 
-    public Account(long accountId, long userId, double moneyAmount) {
+    public Account(long accountId, long userId, BigDecimal moneyAmount) {
         this.accountId = accountId;
         this.userId = userId;
         this.moneyAmount = moneyAmount;
 
     }
 
-    public Double getMoneyAmount() {
+    public BigDecimal getMoneyAmount() {
         return moneyAmount;
     }
 
@@ -26,11 +28,11 @@ public class Account {
         return userId;
     }
 
-    public void setMoneyAmount(double moneyAmount) {
+    public void setMoneyAmount(BigDecimal moneyAmount) {
         this.moneyAmount = moneyAmount;
     }
 
-    public double getTransferCommission() {
+    public BigDecimal getTransferCommission() {
         return transferCommission;
     }
 

@@ -3,6 +3,8 @@ package com.shadrin.console_commands;
 import com.shadrin.entity.Account;
 import com.shadrin.services.AccountService;
 import com.shadrin.services.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
@@ -13,6 +15,7 @@ import java.util.Scanner;
  */
 @Component
 public class CreateAccountCommand implements OperationCommand {
+    private static final Logger log = LogManager.getLogger(CreateAccountCommand.class);
     private final Scanner scanner;
     private final AccountService accountService;
     private final UserService userService;
@@ -47,7 +50,8 @@ public class CreateAccountCommand implements OperationCommand {
             ));
 
         } catch (RuntimeException e) {
-            System.err.println("Error: invalid values, please check data");
+            log.error("Error: Invalid input values for 'create account' operation");
+            System.err.println("Error: invalid values, please check data" + e.getMessage());
         }
     }
 

@@ -1,6 +1,9 @@
 package com.shadrin.services;
 
+import com.shadrin.console_commands.WithdrawAccountCommand;
 import com.shadrin.entity.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,7 +15,8 @@ import java.util.regex.Pattern;
  * Сервис для управления пользователями.
  */
 @Service
-public class UserService {//TODO добавить Set takenLogins?
+public class UserService {
+    private static final Logger log = LogManager.getLogger(UserService.class);
     private final AccountService accountService;
     private final Map<Long, User> usersMap;
     private AtomicInteger idCounter;
@@ -24,7 +28,6 @@ public class UserService {//TODO добавить Set takenLogins?
     public UserService(AccountService accountService) {
         this.usersMap = new ConcurrentHashMap<>();
         this.accountService = accountService;
-        //this.takenLogins = new HashSet<>();
         this.idCounter = new AtomicInteger(0);
     }
 
@@ -46,7 +49,6 @@ public class UserService {//TODO добавить Set takenLogins?
         }
 
         //создание нового пользователя
-        //idCounter.incrementAndGet();
         var newUser = new User(idCounter.incrementAndGet(), login, new ArrayList<>());
         usersMap.put(newUser.getId(), newUser);
         var newAccount = accountService.createAccount(newUser);
@@ -90,8 +92,8 @@ public class UserService {//TODO добавить Set takenLogins?
                 }
                 return login;
             } catch (IllegalArgumentException e) {
-                System.err.println("Error: " + e.getMessage());
-                System.err.println("Please try again.");
+                log.error("Error: {}", e.getMessage(),e);
+                System.err.println("Error: invalid login value. Please try again.");
             }
         }
     }

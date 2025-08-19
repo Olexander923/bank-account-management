@@ -1,0 +1,114 @@
+2025-08-19 14:22:32.956 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\ApplicationConfiguration.class]
+2025-08-19 14:22:32.971 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\console\ConsoleListenerStarter.class]
+2025-08-19 14:22:32.974 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\console\OperationsConsoleListener.class]
+2025-08-19 14:22:32.985 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\console_commands\CloseAccountCommand.class]
+2025-08-19 14:22:32.988 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\console_commands\CreateAccountCommand.class]
+2025-08-19 14:22:32.992 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\console_commands\CreateUserCommand.class]
+2025-08-19 14:22:32.999 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\console_commands\DepositAccountCommand.class]
+2025-08-19 14:22:33.002 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Ignored because not a concrete top-level class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\console_commands\OperationCommand.class]
+2025-08-19 14:22:33.006 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\console_commands\ShowAllUsersCommand.class]
+2025-08-19 14:22:33.013 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\console_commands\TransferAccountCommand.class]
+2025-08-19 14:22:33.015 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\console_commands\WithdrawAccountCommand.class]
+2025-08-19 14:22:33.025 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\properties\AccountProperties.class]
+2025-08-19 14:22:33.030 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\properties\MainProperties.class]
+2025-08-19 14:22:33.041 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\services\AccountService.class]
+2025-08-19 14:22:33.045 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\Users\Сашок\Desktop\project-maven-master\bank-account_management\target\classes\com\shadrin\services\UserService.class]
+2025-08-19 14:22:33.077 [main] DEBUG o.s.c.a.AnnotationConfigApplicationContext - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4a22f9e2
+2025-08-19 14:22:33.168 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2025-08-19 14:22:33.523 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+2025-08-19 14:22:33.532 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2025-08-19 14:22:33.541 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2025-08-19 14:22:33.548 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2025-08-19 14:22:33.583 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'applicationConfiguration'
+2025-08-19 14:22:33.603 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'consoleListenerStarter'
+2025-08-19 14:22:33.644 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'operationsConsoleListener'
+2025-08-19 14:22:33.654 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'scanner'
+2025-08-19 14:22:33.671 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'closeAccountCommand'
+2025-08-19 14:22:33.677 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'accountService'
+2025-08-19 14:22:33.681 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'accountProperties'
+2025-08-19 14:22:33.696 [main] DEBUG o.s.c.e.PropertySourcesPropertyResolver - Found key 'account.default-amount' in PropertySource 'class path resource [application.properties]' with value of type String
+2025-08-19 14:22:33.740 [main] DEBUG o.s.c.e.PropertySourcesPropertyResolver - Found key 'account.transfer-commission' in PropertySource 'class path resource [application.properties]' with value of type String
+2025-08-19 14:22:33.747 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'accountService' via constructor to bean named 'accountProperties'
+2025-08-19 14:22:33.751 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'userService'
+2025-08-19 14:22:33.753 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'userService' via constructor to bean named 'accountService'
+2025-08-19 14:22:33.845 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'closeAccountCommand' via constructor to bean named 'accountService'
+2025-08-19 14:22:33.845 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'closeAccountCommand' via constructor to bean named 'scanner'
+2025-08-19 14:22:33.845 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'closeAccountCommand' via constructor to bean named 'userService'
+2025-08-19 14:22:33.847 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'createAccountCommand'
+2025-08-19 14:22:33.848 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'createAccountCommand' via constructor to bean named 'scanner'
+2025-08-19 14:22:33.848 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'createAccountCommand' via constructor to bean named 'accountService'
+2025-08-19 14:22:33.849 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'createAccountCommand' via constructor to bean named 'userService'
+2025-08-19 14:22:33.854 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'createUserCommand'
+2025-08-19 14:22:33.858 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'createUserCommand' via constructor to bean named 'userService'
+2025-08-19 14:22:33.858 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'createUserCommand' via constructor to bean named 'scanner'
+2025-08-19 14:22:33.861 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'depositAccountCommand'
+2025-08-19 14:22:33.864 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'depositAccountCommand' via constructor to bean named 'accountService'
+2025-08-19 14:22:33.865 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'depositAccountCommand' via constructor to bean named 'scanner'
+2025-08-19 14:22:33.867 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'showAllUsersCommand'
+2025-08-19 14:22:33.869 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'showAllUsersCommand' via constructor to bean named 'userService'
+2025-08-19 14:22:33.870 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'transferAccountCommand'
+2025-08-19 14:22:33.874 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'transferAccountCommand' via constructor to bean named 'accountService'
+2025-08-19 14:22:33.875 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'transferAccountCommand' via constructor to bean named 'scanner'
+2025-08-19 14:22:33.881 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'withdrawAccountCommand'
+2025-08-19 14:22:33.882 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'withdrawAccountCommand' via constructor to bean named 'accountService'
+2025-08-19 14:22:33.883 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'withdrawAccountCommand' via constructor to bean named 'scanner'
+2025-08-19 14:22:33.903 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'operationsConsoleListener' via constructor to bean named 'scanner'
+2025-08-19 14:22:33.906 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'operationsConsoleListener' via constructor to bean named 'closeAccountCommand'
+2025-08-19 14:22:33.906 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'operationsConsoleListener' via constructor to bean named 'createAccountCommand'
+2025-08-19 14:22:33.908 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'operationsConsoleListener' via constructor to bean named 'createUserCommand'
+2025-08-19 14:22:33.909 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'operationsConsoleListener' via constructor to bean named 'depositAccountCommand'
+2025-08-19 14:22:33.910 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'operationsConsoleListener' via constructor to bean named 'showAllUsersCommand'
+2025-08-19 14:22:33.910 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'operationsConsoleListener' via constructor to bean named 'transferAccountCommand'
+2025-08-19 14:22:33.913 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'operationsConsoleListener' via constructor to bean named 'withdrawAccountCommand'
+2025-08-19 14:22:33.927 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Autowiring by type from bean name 'consoleListenerStarter' via constructor to bean named 'operationsConsoleListener'
+2025-08-19 14:22:33.936 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'mainProperties'
+2025-08-19 14:22:46.859 [Thread-0] ERROR com.shadrin.services.UserService - Error: Invalid login format. Login must be 3-20 characters long, start and end with a letter or digit, and may contain '.', '-', or '_' in the middle.
+java.lang.IllegalArgumentException: Invalid login format. Login must be 3-20 characters long, start and end with a letter or digit, and may contain '.', '-', or '_' in the middle.
+	at com.shadrin.services.UserService.loginValidator(UserService.java:89)
+	at com.shadrin.console_commands.CreateUserCommand.execute(CreateUserCommand.java:30)
+	at com.shadrin.console.OperationsConsoleListener.run(OperationsConsoleListener.java:65)
+	at com.shadrin.console.ConsoleListenerStarter.lambda$postConstruct$0(ConsoleListenerStarter.java:23)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-08-19 14:23:57.865 [Thread-0] ERROR c.s.c.CreateAccountCommand - Error: Invalid input values for 'create account' operation
+2025-08-19 14:25:14.889 [Thread-0] ERROR c.s.c.OperationsConsoleListener - Unexpected system error in 'operation console listener'
+java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+	at com.shadrin.console.OperationsConsoleListener.run(OperationsConsoleListener.java:53)
+	at com.shadrin.console.ConsoleListenerStarter.lambda$postConstruct$0(ConsoleListenerStarter.java:23)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-08-19 14:25:14.930 [Thread-0] ERROR c.s.c.OperationsConsoleListener - Unexpected system error in 'operation console listener'
+java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+	at com.shadrin.console.OperationsConsoleListener.run(OperationsConsoleListener.java:53)
+	at com.shadrin.console.ConsoleListenerStarter.lambda$postConstruct$0(ConsoleListenerStarter.java:23)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-08-19 14:25:14.933 [Thread-0] ERROR c.s.c.OperationsConsoleListener - Unexpected system error in 'operation console listener'
+java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+	at com.shadrin.console.OperationsConsoleListener.run(OperationsConsoleListener.java:53)
+	at com.shadrin.console.ConsoleListenerStarter.lambda$postConstruct$0(ConsoleListenerStarter.java:23)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-08-19 14:25:14.934 [Thread-0] ERROR c.s.c.OperationsConsoleListener - Unexpected system error in 'operation console listener'
+java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+	at com.shadrin.console.OperationsConsoleListener.run(OperationsConsoleListener.java:53)
+	at com.shadrin.console.ConsoleListenerStarter.lambda$postConstruct$0(ConsoleListenerStarter.java:23)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-08-19 14:25:14.937 [Thread-0] ERROR c.s.c.OperationsConsoleListener - Unexpected system error in 'operation console listener'
+java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+	at com.shadrin.console.OperationsConsoleListener.run(OperationsConsoleListener.java:53)
+	at com.shadrin.console.ConsoleListenerStarter.lambda$postConstruct$0(ConsoleListenerStarter.java:23)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-08-19 14:25:14.939 [Thread-0] ERROR c.s.c.OperationsConsoleListener - Unexpected system error in 'operation console listener'
+java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+	at com.shadrin.console.OperationsConsoleListener.run(OperationsConsoleListener.java:53)
+	at com.shadrin.console.ConsoleListenerStarter.lambda$postConstruct$0(ConsoleListenerStarter.java:23)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-08-19 14:25:14.942 [Thread-0] ERROR c.s.c.OperationsConsoleListener - Unexpected system error in 'operation console listener'
+java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+	at com.shadrin.console.OperationsConsoleListener.run(OperationsConsoleListener.java:53)
+	at com.shadrin.console.ConsoleListenerStarter.lambda$postConstruct$0(ConsoleListenerStarter.java:23)
+	at java.base/java.lang.Thread.run(Thread.java:840)

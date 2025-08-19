@@ -3,6 +3,8 @@ package com.shadrin.console_commands;
 import com.shadrin.entity.Account;
 import com.shadrin.entity.User;
 import com.shadrin.services.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
  */
 @Component
 public class ShowAllUsersCommand implements OperationCommand {
+    private static final Logger log = LogManager.getLogger(ShowAllUsersCommand.class);
     private final UserService userService;
 
 
@@ -70,7 +73,8 @@ public class ShowAllUsersCommand implements OperationCommand {
             ));
 
         } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
+            log.error("Error: Invalid input format for 'show users operation' operation");
+            System.err.println("System error: Please contact support " + e.getMessage());
         }
 
     }

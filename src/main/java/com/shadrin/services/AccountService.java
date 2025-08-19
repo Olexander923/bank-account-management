@@ -1,9 +1,15 @@
 package com.shadrin.services;
 
+import com.shadrin.console_commands.TransferAccountCommand;
 import com.shadrin.entity.Account;
 import com.shadrin.entity.User;
 import com.shadrin.properties.AccountProperties;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -18,7 +24,7 @@ public class AccountService {
     private AtomicInteger idCounter;
     private AccountProperties accountProperties;
     private final Map<Long, Account> accountsMap;
-    private final static double MAX_DEPOSIT_AMOUNT = 1000000.00;
+    private final static BigDecimal MAX_DEPOSIT_AMOUNT = new BigDecimal("1000000.00");
 
 
     public AccountService(AccountProperties accountProperties) {
@@ -32,7 +38,6 @@ public class AccountService {
      * создание счета
      */
     public Account createAccount(User user) {
-        //idCounter.incrementAndGet();
 
         //создаем новый счет
         Account newAccount = new Account(idCounter.incrementAndGet(), user.getId(), accountProperties.getDefaultAmount());
@@ -45,36 +50,37 @@ public class AccountService {
     /**
      * Перевод средств между счетами
      */
-    public double transfer(long senderAccountId, long recipientAccountId, double transferAmount) {
-        if (transferAmount <= 0) {
+    public BigDecimal transfer(long senderAccountId, long recipientAccountId, BigDecimal transferAmount) {
+        if (transferAmount.signum() <= 0) {
             throw new IllegalArgumentException("Transfer amount must be positive"
                     .formatted(transferAmount));
         }
         //поиск счетов
-        var senderAccount = findAccountById(senderAccountId)
+        Account senderAccount = findAccountById(senderAccountId)
                 .orElseThrow(() -> new IllegalArgumentException("No such account id=%s"
                         .formatted(senderAccountId)));
 
-        var recipientAccount = findAccountById(recipientAccountId)
+        Account recipientAccount = findAccountById(recipientAccountId)
                 .orElseThrow(() -> new IllegalArgumentException("No such account id=%s"
                         .formatted(recipientAccountId)));
 
         //проверка достаточности средств
-        if (senderAccount.getMoneyAmount() < transferAmount) {
+        if (senderAccount.getMoneyAmount().compareTo(transferAmount) < 0) {
             throw new IllegalStateException("Cannot transfer from account: id=%s, money amount=%s, attempted transfer=%s"
                     .formatted(senderAccount, senderAccount.getMoneyAmount(), transferAmount));
         }
 
         //рассчет комиссии за перевод
-        double commissionRate = senderAccount.getUserId() != recipientAccount.getUserId()
-                ? accountProperties.getTransferCommission() : 0;
+        BigDecimal commissionRate = senderAccount.getUserId() != recipientAccount.getUserId()
+                ? accountProperties.getTransferCommission()
+                : BigDecimal.ZERO;
 
-        double commissionAmount = transferAmount * commissionRate;
-        double totalAmountToDeposit = transferAmount - commissionAmount;
+        BigDecimal commissionAmount = transferAmount.multiply(commissionRate);
+        BigDecimal totalAmountToDeposit = transferAmount.subtract(commissionAmount);
 
         //делаем перевод
-        senderAccount.setMoneyAmount(senderAccount.getMoneyAmount() - transferAmount);
-        recipientAccount.setMoneyAmount(recipientAccount.getMoneyAmount() + totalAmountToDeposit);
+        senderAccount.setMoneyAmount(senderAccount.getMoneyAmount().subtract(transferAmount));
+        recipientAccount.setMoneyAmount(recipientAccount.getMoneyAmount().add(totalAmountToDeposit));
 
         return commissionAmount;
     }
@@ -89,44 +95,46 @@ public class AccountService {
     /**
      * попоплнение средств
      */
-    public void deposit(long accountId, double depositAmount) {
+    public void deposit(long accountId, BigDecimal depositAmount) {
         var account = findAccountById(accountId);
         if (account.isEmpty()) {
             throw new IllegalArgumentException("Account with " + accountId + " does not exist");
         }
 
-        if (depositAmount <= 0) {
+        if (depositAmount.signum() <= 0) {
             throw new IllegalArgumentException("Deposit amount must be positive." +
                     "Received: " + depositAmount);
         }
 
-        if (depositAmount > MAX_DEPOSIT_AMOUNT) {
+        if (depositAmount.compareTo(MAX_DEPOSIT_AMOUNT) > 0) {
             throw new IllegalStateException("Deposit amount exceeds maximum limit");
         }
 
         //проверка статуса счета
         if (!account.get().isActive()) {
-            throw new IllegalArgumentException("Cannot deposit a closed account." +
+            throw new IllegalArgumentException("Cannot deposit closed account." +
                     "Account ID: " + accountId);
         }
 
         //выполнение операции
-        double newBalance = account.get().getMoneyAmount() + depositAmount;
+        BigDecimal newBalance = account.get().getMoneyAmount().add(depositAmount);
         account.get().setMoneyAmount(newBalance);
-        System.out.printf("Account %d successfully deposit: Amount %.2f New balance %.2f%n",
-                accountId, depositAmount, newBalance);
+        System.out.printf("Account %d successfully deposit: Amount %s, New balance %s%n",
+                accountId,
+                depositAmount.setScale(2, RoundingMode.HALF_UP),
+                newBalance.setScale(2,RoundingMode.HALF_UP));
     }
 
     /**
      * снятие средств
      */
-    public void withdraw(long accountId, double withdrawAmount) {
+    public void withdraw(long accountId, BigDecimal withdrawAmount) {
         var account = findAccountById(accountId);
         if (account.isEmpty()) {
             throw new IllegalArgumentException("Account with " + accountId + " does not exist");
         }
         //проверка суммы снятия
-        if (withdrawAmount <= 0) {
+        if (withdrawAmount.signum() <= 0) {
             throw new IllegalArgumentException("Withdrawal amount must be positive." +
                     "Received: " + withdrawAmount);
         }
@@ -138,7 +146,7 @@ public class AccountService {
         }
 
         //проверка достаточности средств
-        if (account.get().getMoneyAmount() < withdrawAmount) {
+        if (account.get().getMoneyAmount().compareTo(withdrawAmount) < 0) {
             throw new IllegalStateException(String.format(
                     "Insufficient funds, available: %.2f, Attempted to withdraw: %.2f",
                     account.get().getMoneyAmount(),
@@ -147,10 +155,12 @@ public class AccountService {
         }
 
         //выполнение операции
-        double newBalance = account.get().getMoneyAmount() - withdrawAmount;
+        BigDecimal newBalance = account.get().getMoneyAmount().subtract(withdrawAmount);
         account.get().setMoneyAmount(newBalance);
-        System.out.printf("Account %d successfully withdraw: Amount %.2f New balance %.2f%n",
-                accountId, withdrawAmount, newBalance);
+        System.out.printf("Account %d successfully withdraw: Amount %s, New balance %s%n",
+                accountId,
+                withdrawAmount.setScale(2, RoundingMode.HALF_UP),
+                newBalance.setScale(2, RoundingMode.HALF_UP));
     }
 
     /**
@@ -174,7 +184,7 @@ public class AccountService {
                 .findFirst()
                 .orElseThrow();
 
-        accountToDeposit.setMoneyAmount(accountToDeposit.getMoneyAmount() + accountToClose.getMoneyAmount());
+        accountToDeposit.setMoneyAmount(accountToDeposit.getMoneyAmount().add(accountToClose.getMoneyAmount()));
         accountsMap.remove(accountId);
 
         return accountToClose;
